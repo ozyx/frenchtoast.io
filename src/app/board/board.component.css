@@ -1,0 +1,10 @@
+.category {
+    max-width: 300px;
+    background-color: lightgray;
+}
+
+.task-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
