@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskStatus } from "../model/task-status";
+import { TaskStatus } from '../model/task-status';
 
 @Component({
   selector: 'app-board',
@@ -12,8 +12,8 @@ export class BoardComponent implements OnInit {
 
   constructor() {
     this.statuses = [
-      new TaskStatus()
-    ]
+      new TaskStatus(),
+    ];
    }
 
   ngOnInit() {

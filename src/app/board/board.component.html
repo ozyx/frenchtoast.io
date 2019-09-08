@@ -1,6 +1,6 @@
 <mat-list *ngFor="let status of statuses">
     <mat-card class="category">
-        <mat-card-title>{{  status.title  }}</mat-card-title>
+        <mat-card-title>{{ status.title }}</mat-card-title>
         <div class="task-container">
             <mat-card class="task" *ngFor="let task of status.getTasks()">
                 <mat-card-title-group>
