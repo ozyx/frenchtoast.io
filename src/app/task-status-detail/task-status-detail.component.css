@@ -1,0 +1,11 @@
+.task-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.task {
+    flex: 1;
+    width: 100%;
+    margin-bottom: 20px;
+}
