@@ -1,16 +1,5 @@
 <mat-list *ngFor="let status of statuses">
     <mat-card class="category">
-        <mat-card-title>{{ status.title }}</mat-card-title>
-        <div class="task-container">
-            <mat-card class="task" *ngFor="let task of status.getTasks()">
-                <mat-card-title-group>
-                    <mat-card-title matLine>{{ task.id }}: {{ task.title }}</mat-card-title>
-                    <mat-card-subtitle matLine>Assigned to: {{ task.assignedTo }}</mat-card-subtitle>
-                </mat-card-title-group>
-                <mat-card-content matLine>
-                    <p><span>{{ task.description }}</span></p>
-                </mat-card-content>
-            </mat-card>
-        </div>
+        <app-task-status-detail [status]="status"></app-task-status-detail>
     </mat-card>
 </mat-list>

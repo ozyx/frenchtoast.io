@@ -21,4 +21,8 @@ export class TaskStatus implements ITaskStatus {
     public getTasks(): Task[] {
         return this.tasks;
     }
+
+    public getTitle(): string {
+        return this.title;
+    }
 }
