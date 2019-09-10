@@ -9,3 +9,7 @@
     width: 100%;
     margin-bottom: 20px;
 }
+
+.mat-card-title {
+    font-size: 19px;
+}

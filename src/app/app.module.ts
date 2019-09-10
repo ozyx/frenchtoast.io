@@ -8,15 +8,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar'; 
+
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { TaskStatusDetailComponent } from './task-status-detail/task-status-detail.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoardComponent,
     TaskDetailComponent,
-    TaskStatusDetailComponent
+    TaskStatusDetailComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +28,8 @@ import { TaskStatusDetailComponent } from './task-status-detail/task-status-deta
     BrowserAnimationsModule,
     MatCardModule,
     MatDividerModule,
-    MatListModule
+    MatListModule, 
+    MatToolbarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
