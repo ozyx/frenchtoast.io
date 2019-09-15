@@ -1,5 +1,14 @@
-<mat-list *ngFor="let status of statuses">
+<mat-toolbar>
+    <span class="board-title">{{this.title}}</span>
+
+    <form class="form" (ngSubmit)="onSubmit()">
+        <input type="text" placeholder="Add category...">
+        <input type="submit" value="Submit" class="btn">
+    </form>
+</mat-toolbar>
+
+<div class="board" *ngFor="let status of statuses">
     <mat-card class="category">
         <app-task-status-detail [status]="status"></app-task-status-detail>
     </mat-card>
-</mat-list>
+</div>

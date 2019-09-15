@@ -1,4 +1,18 @@
 .category {
-    max-width: 275px;
+    width: 285px;
+    max-width: 300px;
     background-color: lightgray;
+}
+
+.board {
+    display: inline-block;
+    margin: 1em;
+}
+
+.board-title {
+    margin-right: 3em;
+}
+
+.btn {
+    height: 41px;
 }
