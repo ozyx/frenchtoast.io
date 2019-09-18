@@ -2,7 +2,9 @@
     <span class="board-title">{{this.title}}</span>
 
     <form class="form" (ngSubmit)="onSubmit()">
-        <input type="text" placeholder="Add category...">
+        <mat-form-field>
+            <input matInput placeholder="Favorite food" value="Sushi">
+        </mat-form-field>
         <button mat-raised-button>Submit</button>
     </form>
 </mat-toolbar>
