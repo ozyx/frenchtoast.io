@@ -35,5 +35,16 @@ export const STATUSES: ITaskStatus[] = [
             }
         ]
     },
+    {
+        title: "Done",
+        tasks: [
+            {
+                id: 5,
+                title: "Completed task",
+                description: "It be done mon",
+                assignedTo: "Eric"
+            }
+        ]
+    },
     
 ]

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { TaskStatus } from './model/task-status';
-import { STATUSES } from './mock/statuses';
+import { TaskStatus } from '../model/task-status';
+import { STATUSES } from '../mock/statuses';
 
 @Injectable({
   providedIn: 'root'

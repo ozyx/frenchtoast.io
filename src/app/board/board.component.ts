@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskStatus } from '../model/task-status';
-import { TaskStatusService } from '../task-status.service';
+import { TaskStatusService } from '../service/task-status.service';
 
 @Component({
   selector: 'app-board',
