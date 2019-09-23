@@ -1,7 +1,7 @@
 <mat-card class="category">
-    <mat-card-title>{{ status.getTitle() }}</mat-card-title>
+    <mat-card-title>{{ getTitle() }}</mat-card-title>
     <div class="task-container">
-        <div class="task" *ngFor="let task of status.getTasks()">
+        <div class="task" *ngFor="let task of tasks">
             <app-task-detail [task]="task"></app-task-detail>
         </div>
     </div>
