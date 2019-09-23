@@ -1,23 +1,26 @@
-import {Component, OnInit} from '@angular/core';
-import {TaskStatus} from '../model/task-status';
+import { Component, OnInit } from '@angular/core';
+import { TaskStatus } from '../model/task-status';
+import { TaskStatusService } from '../task-status.service';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
-  styleUrls: ['./board.component.css']
+  styleUrls: ['./board.component.css'],
+  providers: [TaskStatusService]
 })
 export class BoardComponent implements OnInit {
   statuses: TaskStatus[];
   title: string;
 
-  constructor() {
+  constructor(private statusService: TaskStatusService) {
     this.title = 'Test Board';
-    this.statuses = [new TaskStatus(), new TaskStatus()];
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.statuses = this.statusService.getStatuses();
+  }
 
   onSubmit() {
-    this.statuses = [new TaskStatus()];
+    // this.statuses = [new TaskStatus()];
   }
 }

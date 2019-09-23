@@ -1,30 +1,24 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../model/task'
 import { TaskStatus } from '../model/task-status';
-import { TaskService } from '../task.service'
 
 @Component({
   selector: 'app-task-status-detail',
   templateUrl: './task-status-detail.component.html',
   styleUrls: ['./task-status-detail.component.css'],
-  providers: [TaskService]
 })
 export class TaskStatusDetailComponent implements OnInit {
   tasks: Task[];
 
   @Input() status: TaskStatus;
-  constructor(private taskService: TaskService) { }
-
+  constructor() { 
+  }
+  
   ngOnInit() {
-    this.getTasks();
+    this.tasks = this.status.tasks;
   }
-
-  getTasks() {
-    this.tasks = this.taskService.getTasks();
-  }
-
+  
   getTitle(): String {
-    return "Backlog";
+    return this.status.title;
   }
-
 }
