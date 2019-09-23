@@ -1,10 +1,13 @@
 <mat-toolbar>
     <span class="board-title">{{this.title}}</span>
-    <form class="form" (ngSubmit)="onSubmit()">
+    <!-- The "return false" below is a JQuery-free hack to make it 
+        so that form submit does not refresh the page. 
+        ref: https://stackoverflow.com/a/22772518 -->
+    <form class="form" onsubmit="return false">
         <mat-form-field>
-            <input matInput placeholder="Add Category">
+            <input #categoryName matInput placeholder="Add Category">
         </mat-form-field>
-        <button mat-raised-button>Submit</button>
+        <button mat-raised-button (click)="onSubmit(categoryName.value);categoryName.value=''">Submit</button>
     </form>
 </mat-toolbar>
 

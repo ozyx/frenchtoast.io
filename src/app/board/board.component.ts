@@ -20,7 +20,7 @@ export class BoardComponent implements OnInit {
     this.statuses = this.statusService.getStatuses();
   }
 
-  onSubmit() {
-    // this.statuses = [new TaskStatus()];
+  onSubmit(title: string) {
+    this.statusService.add(new TaskStatus(title));
   }
 }

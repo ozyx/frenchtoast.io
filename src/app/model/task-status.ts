@@ -10,6 +10,8 @@ export class TaskStatus implements ITaskStatus {
     title: string;
     tasks: Task[];
 
-    constructor() {
+    constructor(title: string) {
+        this.title = title;
+        this.tasks = [];
     }
 }
