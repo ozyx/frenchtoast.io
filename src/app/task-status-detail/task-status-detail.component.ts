@@ -18,7 +18,11 @@ export class TaskStatusDetailComponent implements OnInit {
     this.tasks = this.status.tasks;
   }
   
-  getTitle(): String {
+  getTitle(): string {
     return this.status.title;
+  }
+
+  add() {
+    this.status.tasks.push(new Task(42, 'test', 'test', 'test'));
   }
 }

@@ -1,8 +1,8 @@
-import { Task } from "./task";
+import { Task } from './task';
 
 export interface ITaskStatus {
     title: string;
-    tasks: Task[]; 
+    tasks: Task[];
 }
 
 export class TaskStatus implements ITaskStatus {

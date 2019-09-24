@@ -5,4 +5,11 @@
             <app-task-detail [task]="task"></app-task-detail>
         </div>
     </div>
+    <mat-card-footer>
+        <div class="add-task">
+            <button mat-fab aria-label="Add a task" (click)="add()">
+                <mat-icon>add</mat-icon>
+            </button>
+        </div>
+    </mat-card-footer>
 </mat-card>
