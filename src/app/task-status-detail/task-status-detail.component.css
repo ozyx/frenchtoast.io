@@ -13,3 +13,9 @@
 .mat-card-title {
     font-size: 19px;
 }
+
+.add-task {
+    position: relative;
+    top: -10px;
+    left: 8px;
+}

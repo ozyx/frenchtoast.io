@@ -11,8 +11,8 @@
     </form>
 </mat-toolbar>
 
-<div class="board" *ngFor="let status of statuses">
-    <mat-card class="category">
+<div class="board">
+    <mat-card class="category" *ngFor="let status of statuses">
         <app-task-status-detail [status]="status"></app-task-status-detail>
     </mat-card>
 </div>

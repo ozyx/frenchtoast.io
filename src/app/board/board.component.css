@@ -1,12 +1,16 @@
 .category {
     width: 285px;
-    max-width: 300px;
-    background-color: lightgray;
+    height: auto;
+    background-color: lightgrey;
+    margin: 1em;
+    flex: 0 0 auto;
 }
 
 .board {
-    display: inline-block;
-    margin: 1em;
+    display: flex;
+    flex-flow: row nowrap;
+    overflow-x: auto; 
+    justify-content: flex-start;
 }
 
 .board-title {
