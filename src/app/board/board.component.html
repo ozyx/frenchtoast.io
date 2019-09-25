@@ -12,7 +12,7 @@
 </mat-toolbar>
 
 <div class="board">
-    <mat-card class="category" *ngFor="let status of statuses">
-        <app-task-status-detail [status]="status"></app-task-status-detail>
+    <mat-card class="category" *ngFor="let category of categories">
+        <app-category-detail [category]="category"></app-category-detail>
     </mat-card>
 </div>

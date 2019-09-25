@@ -14,12 +14,12 @@ import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
 import { FooterComponent } from './footer/footer.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
-import { TaskStatusDetailComponent } from './task-status-detail/task-status-detail.component';
+import { CategoryDetailComponent } from './task-status-detail/category-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent, BoardComponent, TaskDetailComponent,
-    TaskStatusDetailComponent, FooterComponent
+    CategoryDetailComponent, FooterComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, BrowserAnimationsModule, MatCardModule,

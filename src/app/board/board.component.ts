@@ -1,26 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskStatus } from '../model/task-status';
-import { TaskStatusService } from '../service/task-status.service';
+import { Category } from '../model/category';
+import { CategoryService } from '../service/category.service';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.css'],
-  providers: [TaskStatusService]
+  providers: [CategoryService]
 })
 export class BoardComponent implements OnInit {
-  statuses: TaskStatus[];
+  categories: Category[];
   title: string;
 
-  constructor(private statusService: TaskStatusService) {
+  constructor(private categoryService: CategoryService) {
     this.title = 'Test Board';
   }
 
   ngOnInit() {
-    this.statuses = this.statusService.getStatuses();
+    this.categories = this.categoryService.getStatuses();
   }
 
   onSubmit(title: string) {
-    this.statusService.add(new TaskStatus(title));
+    this.categoryService.add(new Category(title));
   }
 }

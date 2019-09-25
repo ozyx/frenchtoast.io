@@ -1,11 +1,11 @@
 import { Task } from './task';
 
-export interface ITaskStatus {
+export interface ICategory {
     title: string;
     tasks: Task[];
 }
 
-export class TaskStatus implements ITaskStatus {
+export class Category implements ICategory {
 
     title: string;
     tasks: Task[];

@@ -1,6 +1,6 @@
-import { ITaskStatus } from '../model/task-status';
+import { ICategory } from '../model/category';
 
-export const STATUSES: ITaskStatus[] = [
+export const STATUSES: ICategory[] = [
     {
         title: "Backlog",
         tasks: [
