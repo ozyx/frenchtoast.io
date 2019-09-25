@@ -44,7 +44,6 @@ const appRoutes: Routes = [
     HeaderComponent
   ],
   imports: [
-    AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
     MatCardModule,
@@ -54,6 +53,7 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatButtonModule,
     MatInputModule,
+    AppRoutingModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
