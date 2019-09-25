@@ -4,7 +4,6 @@
     background-color: lightgrey;
     margin: 1em;
     flex: 0 0 auto;
-
 }
 
 .board {
@@ -13,12 +12,4 @@
     overflow-x: auto; 
     justify-content: flex-start;
     padding-bottom: 60px;
-}
-
-.board-title {
-    margin-right: 3em;
-}
-
-.btn {
-    height: 41px;
 }

@@ -16,6 +16,7 @@ import { CategoryDetailComponent } from './category-detail/category-detail.compo
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule, Routes } from '@angular/router';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
+import { HeaderComponent } from './header/header.component';
 
 const appRoutes: Routes = [
   {
@@ -37,9 +38,10 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     BoardComponent,
-    TaskDetailComponent,
     CategoryDetailComponent,
-    FooterComponent
+    FooterComponent,
+    TaskDetailComponent,
+    HeaderComponent
   ],
   imports: [
     AppRoutingModule,

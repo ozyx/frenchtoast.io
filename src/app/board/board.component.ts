@@ -19,8 +19,4 @@ export class BoardComponent implements OnInit {
   ngOnInit() {
     this.categories = this.categoryService.getStatuses();
   }
-
-  onSubmit(title: string) {
-    this.categoryService.add(new Category(title));
-  }
 }
