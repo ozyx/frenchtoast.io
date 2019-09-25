@@ -12,7 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
-import { CategoryDetailComponent } from './task-status-detail/category-detail.component';
+import { CategoryDetailComponent } from './category-detail/category-detail.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule, Routes } from '@angular/router';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
