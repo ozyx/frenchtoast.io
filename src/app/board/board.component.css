@@ -4,6 +4,7 @@
     background-color: lightgrey;
     margin: 1em;
     flex: 0 0 auto;
+
 }
 
 .board {
@@ -11,6 +12,7 @@
     flex-flow: row nowrap;
     overflow-x: auto; 
     justify-content: flex-start;
+    padding-bottom: 60px;
 }
 
 .board-title {
