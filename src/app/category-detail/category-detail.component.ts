@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Task } from '../model/task'
+import { Task } from '../model/task';
 import { Category } from '../model/category';
 
 @Component({
@@ -11,13 +11,13 @@ export class CategoryDetailComponent implements OnInit {
   tasks: Task[];
 
   @Input() category: Category;
-  constructor() { 
+  constructor() {
   }
-  
+
   ngOnInit() {
     this.tasks = this.category.tasks;
   }
-  
+
   getTitle(): string {
     return this.category.title;
   }

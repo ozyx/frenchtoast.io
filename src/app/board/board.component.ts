@@ -9,7 +9,7 @@ import { CategoryService } from '../service/category.service';
   providers: [CategoryService]
 })
 export class BoardComponent implements OnInit {
-  categories: Category[];
+  categories: Category[] = [];
   title: string;
 
   constructor(private categoryService: CategoryService) {
@@ -17,6 +17,11 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.categories = this.categoryService.getStatuses();
+    this.getCategories();
+  }
+
+  getCategories(): void {
+    this.categoryService.getCategories()
+      .subscribe(categories => this.categories = categories);
   }
 }
