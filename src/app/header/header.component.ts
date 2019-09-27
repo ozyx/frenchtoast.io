@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../model/category';
-import { CategoryService } from '../service/category.service';
 
 @Component({
   selector: 'app-header',
@@ -8,12 +6,8 @@ import { CategoryService } from '../service/category.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  constructor(private categoryService: CategoryService) { }
+  constructor() { }
 
   ngOnInit() {
-  }
-
-  onSubmit(title: string) {
-    this.categoryService.add({ title } as Category);
   }
 }

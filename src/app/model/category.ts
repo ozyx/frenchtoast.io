@@ -12,8 +12,11 @@ export class Category implements ICategory {
     title: string;
     tasks: Task[];
 
-    constructor(id: number, title: string) {
-        this.title = title;
+    constructor(title?: string) {
+        this.title = "";
         this.tasks = [];
+        if (title) {
+            this.title = title;
+        }
     }
 }

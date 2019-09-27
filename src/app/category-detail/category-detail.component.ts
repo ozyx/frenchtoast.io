@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../model/task';
 import { Category } from '../model/category';
+import { CategoryService } from '../service/category.service';
 
 @Component({
   selector: 'app-category-detail',
@@ -9,13 +10,20 @@ import { Category } from '../model/category';
 })
 export class CategoryDetailComponent implements OnInit {
   tasks: Task[];
-
+  readonly: string = "true";
   @Input() category: Category;
-  constructor() {
+  constructor(private categoryService: CategoryService) {
+
   }
 
   ngOnInit() {
-    this.tasks = this.category.tasks;
+    this.getTasks();
+  }
+
+  getTasks(): void {
+    this.categoryService.getCategoryById(this.category.id).subscribe(category => {
+      this.tasks = category.tasks;
+    });
   }
 
   getTitle(): string {
@@ -23,6 +31,10 @@ export class CategoryDetailComponent implements OnInit {
   }
 
   add() {
-    this.category.tasks.push(new Task(42, 'test', 'test', 'test'));
+    this.tasks.push(new Task(42, 'test', 'test', 'test'));
+  }
+
+  toggleEdit() {
+    this.readonly = this.readonly == "true" ? "false" : "true";
   }
 }

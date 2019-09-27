@@ -34,6 +34,7 @@ import { HeaderComponent } from './header/header.component';
     HeaderComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
     HttpClientModule,
@@ -44,7 +45,6 @@ import { HeaderComponent } from './header/header.component';
     MatToolbarModule,
     MatButtonModule,
     MatInputModule,
-    AppRoutingModule,
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
     // Remove it when a real server is ready to receive requests.
