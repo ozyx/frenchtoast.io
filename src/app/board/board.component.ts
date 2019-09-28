@@ -24,12 +24,12 @@ export class BoardComponent implements OnInit {
     this.categoryService.getCategories()
       .subscribe(categories => this.categories = categories);
   }
-  
+
   newCategory(): void {
-    this.categories.push(new Category());
+    this.addCategory('');
   }
 
-  onSubmit(title: string) {
+  addCategory(title: string) {
     this.categoryService.add({ title } as Category).subscribe(category => {
       this.categories.push(category);
     });

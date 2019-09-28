@@ -10,10 +10,12 @@ import { CategoryService } from '../service/category.service';
 })
 export class CategoryDetailComponent implements OnInit {
   tasks: Task[];
-  readonly: string = "true";
+  readonly: string;
+
   @Input() category: Category;
   constructor(private categoryService: CategoryService) {
-
+    this.tasks = [];
+    this.readonly = 'true';
   }
 
   ngOnInit() {
@@ -22,7 +24,7 @@ export class CategoryDetailComponent implements OnInit {
 
   getTasks(): void {
     this.categoryService.getCategoryById(this.category.id).subscribe(category => {
-      this.tasks = category.tasks;
+      this.tasks = category.tasks !== undefined ? category.tasks : [];
     });
   }
 
@@ -30,11 +32,12 @@ export class CategoryDetailComponent implements OnInit {
     return this.category.title;
   }
 
+  // TODO: this should be adding / subscribing to the InMemoryDataService
   add() {
     this.tasks.push(new Task(42, 'test', 'test', 'test'));
   }
 
   toggleEdit() {
-    this.readonly = this.readonly == "true" ? "false" : "true";
+    this.readonly = this.readonly === 'true' ? 'false' : 'true';
   }
 }
