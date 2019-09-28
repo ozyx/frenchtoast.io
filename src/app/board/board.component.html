@@ -1,4 +1,7 @@
 <div class="board">
+    <button color="accent" mat-icon-button (click)="newCategory()">
+        <mat-icon>add</mat-icon>
+    </button>
     <mat-card class="category" *ngFor="let category of categories">
         <app-category-detail [category]="category"></app-category-detail>
     </mat-card>
