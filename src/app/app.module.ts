@@ -23,6 +23,7 @@ import { CategoryDetailComponent } from './category-detail/category-detail.compo
 import { FooterComponent } from './footer/footer.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { HeaderComponent } from './header/header.component';
+import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,15 @@ import { HeaderComponent } from './header/header.component';
     // Remove it when a real server is ready to receive requests.
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false }
-    )
+    ),
+    [LoggerModule.forRoot(
+      {
+        serverLoggingUrl: '/api/logs',
+        level: NgxLoggerLevel.DEBUG,
+        serverLogLevel: NgxLoggerLevel.ERROR,
+        disableConsoleLogging: false
+      }
+    )]
   ],
   providers: [],
   bootstrap: [AppComponent]

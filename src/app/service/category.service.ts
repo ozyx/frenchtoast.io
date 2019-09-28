@@ -4,6 +4,7 @@ import { Task } from '../model/task'
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
+import { NGXLogger } from 'ngx-logger';
 
 @Injectable({
   providedIn: 'root'
@@ -15,27 +16,35 @@ export class CategoryService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private logger: NGXLogger) {
   }
 
   add(category: Category): Observable<Category> {
     if (!category) { return; }
-    return this.http.post<Category>(this.categoriesUrl, category, this.httpOptions).pipe(catchError(this.handleError<Category>('add')));
+    return this.http.post<Category>(this.categoriesUrl, category, this.httpOptions).pipe(
+      catchError(this.handleError<Category>('add'))
+    );
   }
 
   addTask(categoryId: number, task: Task): Observable<Task> {
     const url = `${this.categoriesUrl}/${categoryId}/tasks`;
     if (!task) { return; }
-    return this.http.post<Task>(url, task, this.httpOptions).pipe(catchError(this.handleError<Task>('addTask')));
+    return this.http.post<Task>(url, task, this.httpOptions).pipe(
+      catchError(this.handleError<Task>('addTask'))
+    );
   }
 
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.categoriesUrl).pipe(catchError(this.handleError<Category[]>('getCategories', [])));
+    return this.http.get<Category[]>(this.categoriesUrl).pipe(
+      catchError(this.handleError<Category[]>('getCategories', []))
+    );
   }
 
   getCategoryById(id: number): Observable<Category> {
     const url = `${this.categoriesUrl}/${id}`;
-    return this.http.get<Category>(url);
+    return this.http.get<Category>(url).pipe(
+      catchError(this.handleError<Category>('getCategoryById'))
+    );
   }
 
   /**
@@ -48,10 +57,10 @@ export class CategoryService {
     return (error: any): Observable<T> => {
 
       // TODO: send the error to remote logging infrastructure
-      console.error(error); // log to console instead
+      this.logger.error(error); // log to console instead
 
       // TODO: better job of transforming error for user consumption
-      console.log(`${operation} failed: ${error.message}`);
+      this.logger.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
