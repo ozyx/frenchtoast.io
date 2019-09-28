@@ -1,14 +1,5 @@
 <mat-toolbar color="primary" class="header-nav">
     <mat-toolbar-row>
         <span>frenchtoast.io</span>
-        <!-- The "return false" below is a JQuery-free hack to make it 
-            so that form submit does not refresh the page. 
-            ref: https://stackoverflow.com/a/22772518 -->
-        <form class="form" onsubmit="return false" class="add-category">
-            <mat-form-field color="accent">
-                <input #categoryName matInput placeholder="Add Category">
-            </mat-form-field>
-            <button mat-raised-button (click)="onSubmit(categoryName.value);categoryName.value=''">Submit</button>
-        </form>
     </mat-toolbar-row>
 </mat-toolbar>

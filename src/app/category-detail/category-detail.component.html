@@ -1,9 +1,17 @@
 <mat-card tabindex="1" class="category">
     <mat-card-title>
-            <input #categoryName matInput placeholder="Enter Category Name..." value="{{this.getTitle()}}" readonly="{{this.readonly}}">
+        <!-- The "return false" below is a JQuery-free hack to make it 
+            so that form submit does not refresh the page. 
+            ref: https://stackoverflow.com/a/22772518 -->
+        <form onsubmit="return false" class="add-category">
+            <mat-form-field color="accent">
+                <input matInput #categoryName placeholder="Category Name" value="{{this.getTitle()}}"
+                    readonly="{{this.readonly}}">
+            </mat-form-field>
             <button mat-icon-button (click)="toggleEdit()">
                 <mat-icon>edit</mat-icon>
             </button>
+        </form>
     </mat-card-title>
     <div class="task-container">
         <div class="task" *ngFor="let task of tasks">
