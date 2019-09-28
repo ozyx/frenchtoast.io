@@ -20,6 +20,9 @@ export class CategoryDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getTasks();
+    if (this.getTitle() === '') {
+      this.toggleEdit();
+    }
   }
 
   getTasks(): void {
