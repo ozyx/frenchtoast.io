@@ -37,7 +37,10 @@ export class CategoryDetailComponent implements OnInit {
 
   // TODO: this should be adding / subscribing to the InMemoryDataService
   add() {
-    this.tasks.push(new Task(42, 'test', 'test', 'test'));
+    this.categoryService.addTask(this.category.id, { title: 'test', description: 'test', assignedTo: 'test' } as Task)
+      .subscribe(task => {
+        this.tasks.push(task);
+      });
   }
 
   toggleEdit() {
