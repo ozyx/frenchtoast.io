@@ -18,7 +18,7 @@ export class TaskService {
   constructor(private http: HttpClient, private logger: NGXLogger) { }
 
   getTasks(categoryId: number): Observable<Task[]> {
-    let params = new HttpParams().set('categoryId', categoryId.toString());
+    const params = new HttpParams().set('categoryId', categoryId.toString());
     return this.http.get<Task[]>(this.taskUrl, { params: params }).pipe(
       catchError(this.handleError<Task[]>('getTasks', []))
     );

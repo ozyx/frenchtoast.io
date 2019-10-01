@@ -31,6 +31,12 @@ export class CategoryService {
     );
   }
 
+  addCategory(newCategory: Category): Observable<Category> {
+    return this.http.post<Category>(this.categoriesUrl, newCategory, httpOptions).pipe(
+      catchError(this.handleError<Category>('getCategoryById'))
+    );
+  }
+
   /**
    * Handle Http operation that failed.
    * Let the app continue.
