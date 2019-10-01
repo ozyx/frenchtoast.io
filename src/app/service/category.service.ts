@@ -1,37 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Category } from '../model/category';
-import { Task } from '../model/task'
 import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
-  private categoriesUrl = 'api/categories';
-
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  private categoriesUrl = 'http://localhost:4200/api/categories';
 
   constructor(private http: HttpClient, private logger: NGXLogger) {
-  }
-
-  add(category: Category): Observable<Category> {
-    if (!category) { return; }
-    return this.http.post<Category>(this.categoriesUrl, category, this.httpOptions).pipe(
-      catchError(this.handleError<Category>('add'))
-    );
-  }
-
-  addTask(categoryId: number, task: Task): Observable<Task> {
-    const url = `${this.categoriesUrl}/${categoryId}/tasks`;
-    if (!task) { return; }
-    return this.http.post<Task>(url, task, this.httpOptions).pipe(
-      catchError(this.handleError<Task>('addTask'))
-    );
   }
 
   getCategories(): Observable<Category[]> {

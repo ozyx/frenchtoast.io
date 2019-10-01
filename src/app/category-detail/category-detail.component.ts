@@ -1,33 +1,32 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../model/task';
 import { Category } from '../model/category';
-import { CategoryService } from '../service/category.service';
+import { TaskService } from '../service/task.service';
 
 @Component({
   selector: 'app-category-detail',
   templateUrl: './category-detail.component.html',
   styleUrls: ['./category-detail.component.css'],
+  providers: [TaskService]
 })
 export class CategoryDetailComponent implements OnInit {
   tasks: Task[];
   readonly: string;
 
   @Input() category: Category;
-  constructor(private categoryService: CategoryService) {
+  constructor(private taskService: TaskService) {
     this.tasks = [];
     this.readonly = 'true';
   }
 
   ngOnInit() {
     this.getTasks();
-    if (this.getTitle() === '') {
-      this.toggleEdit();
-    }
   }
 
   getTasks(): void {
-    this.categoryService.getCategoryById(this.category.id).subscribe(category => {
-      this.tasks = category.tasks !== undefined ? category.tasks : [];
+    this.taskService.getTasks(this.category.id).subscribe(tasks => {
+      console.log(tasks);
+      this.tasks = tasks;
     });
   }
 
@@ -36,10 +35,11 @@ export class CategoryDetailComponent implements OnInit {
   }
 
   // TODO: this should be adding / subscribing to the InMemoryDataService
-  add() {
-    this.categoryService.addTask(this.category.id, { title: 'test', description: 'test', assignedTo: 'test' } as Task)
+  addTask() {
+    this.taskService.addTask({ categoryId: this.category.id, title: 'test', description: 'test', assignedTo: 'test' } as Task)
       .subscribe(task => {
-        this.tasks.push(task);
+        console.log(task);
+        this.getTasks();
       });
   }
 
