@@ -1,6 +1,7 @@
 .category {
     width: 285px;
     height: auto;
+    background-size: contain;
     background-color: #757575;
     margin: 1em;
     flex: 0 0 auto;
