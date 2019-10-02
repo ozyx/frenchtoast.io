@@ -4,6 +4,11 @@
     justify-content: space-between;
 }
 
+#delete-category {
+    left: 265px;
+    bottom: 20px;
+}
+
 .task {
     flex: 1;
     width: 100%;
@@ -18,4 +23,8 @@
     position: relative;
     top: -10px;
     left: 8px;
+}
+
+.category {
+    top: -20px;
 }
