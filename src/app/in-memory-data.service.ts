@@ -30,6 +30,10 @@ export class InMemoryDataService implements InMemoryDbService {
   // the method below returns the initial number (11).
   // if the heroes array is not empty, the method below returns the highest
   // hero id + 1.
+  // To generate Ids for multiple classes, you can use typescript generics to let genId
+  // accept multiple classes. In this case, the parameter 'table' can either be a Category or a Task type.
+  // Refer to this stackoverflow post:
+  // https://stackoverflow.com/questions/40146811/multiple-collections-in-angular-in-memory-web-api
   genId<T extends Category | Task>(table: T[]): number {
     return table.length > 0 ? Math.max(...table.map(t => t.id)) + 1 : 1;
   }
