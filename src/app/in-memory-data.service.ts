@@ -27,9 +27,9 @@ export class InMemoryDataService implements InMemoryDbService {
 
   // Overrides the genId method to ensure that a hero always has an id.
   // If the heroes array is empty,
-  // the method below returns the initial number (11).
+  // the method below returns the initial number (1).
   // if the heroes array is not empty, the method below returns the highest
-  // hero id + 1.
+  // category/task id + 1.
   // To generate Ids for multiple classes, you can use typescript generics to let genId
   // accept multiple classes. In this case, the parameter 'table' can either be a Category or a Task type.
   // Refer to this stackoverflow post:

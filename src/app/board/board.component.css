@@ -7,6 +7,11 @@
     flex: 0 0 auto;
 }
 
+#delete-category {
+    left: 265px;
+    bottom: 20px;
+}
+
 .board {
     display: flex;
     flex-flow: row nowrap;
