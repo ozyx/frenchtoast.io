@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../model/task';
 import { Category } from '../model/category';
 import { CategoryService } from '../service/category.service';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-category-detail',
@@ -35,15 +36,14 @@ export class CategoryDetailComponent implements OnInit {
   // TODO: this should be adding / subscribing to the InMemoryDataService
   addTask() {
     this.category.tasks.push({ id: this.currentTaskId, title: 'test', description: 'test', assignedTo: 'test' } as Task);
-    this.categoryService.updateCategory(this.category).subscribe();
-    this.getTasks();
+    this.categoryService.updateCategory(this.category).subscribe(() => this.getTasks());
     this.currentTaskId++;
   }
 
   deleteTask(task: Task) {
     this.category.tasks = this.category.tasks.filter(t => t.id !== task.id);
-    this.categoryService.updateCategory(this.category).subscribe();
-    this.getTasks();
+    this.categoryService.updateCategory(this.category).subscribe(() => this.getTasks());
+    this.currentTaskId--;
   }
 
   toggleEdit() {
