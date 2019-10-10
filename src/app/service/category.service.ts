@@ -4,6 +4,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
+import { Task } from '../model/task';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -26,7 +27,7 @@ export class CategoryService {
 
   getCategoryById(id: number): Observable<Category> {
     const url = `${this.categoriesUrl}/${id}`;
-    return this.http.get<Category>(url).pipe(
+    return this.http.get<Category>(url, httpOptions).pipe(
       catchError(this.handleError<Category>('getCategoryById'))
     );
   }
@@ -42,6 +43,14 @@ export class CategoryService {
     return this.http.delete<Category>(url, httpOptions).pipe(
       tap(_ => this.logger.log(`deleted category id=${id}`)),
       catchError(this.handleError<Category>(`deleteCategory(${id})`))
+    );
+  }
+
+  updateCategory(category: Category) {
+    const url = `${this.categoriesUrl}/${category.id}`;
+    return this.http.put<Category>(url, category, httpOptions).pipe(
+      tap(_ => this.logger.log(`update category id=${category.id}`)),
+      catchError(this.handleError<Category>(`updateCategory(${category.id})`))
     );
   }
 

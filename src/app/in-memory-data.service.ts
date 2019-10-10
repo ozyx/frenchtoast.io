@@ -9,20 +9,29 @@ import { Task } from './model/task';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const categories = [
-      { id: 1, title: "Backlog" },
-      { id: 2, title: "In Progress" },
-      { id: 3, title: "Done" }
+      {
+        id: 1, title: "Backlog",
+        tasks: [
+          { id: 1, title: "Add login page", description: "Add a simple login page", assignedTo: "Canyon" },
+          { id: 2, title: "Add admin page", description: "Add a simple admin page", assignedTo: "Canyon" },
+        ]
+      },
+      {
+        id: 2, title: "In Progress",
+        tasks: [
+          { id: 1, title: "Add a toolbar", description: "Add a toolbar", assignedTo: "Jesse" },
+          { id: 2, title: "Add fun stuff", description: "Add animations", assignedTo: "Canyon" }
+        ]
+      },
+      {
+        id: 3, title: "Done",
+        tasks: [
+          { id: 1, title: "Setup dev environment", description: "Setup VS code for development", assignedTo: "Eric" }
+        ]
+      },
     ];
 
-    const tasks = [
-      { id: 1, categoryId: 1, title: "Add login page", description: "Add a simple login page", assignedTo: "Canyon" },
-      { id: 2, categoryId: 1, title: "Add home page", description: "", assignedTo: "Eric" },
-      { id: 3, categoryId: 2, title: "Add a toolbar", description: "Add a toolbar", assignedTo: "Jesse" },
-      { id: 4, categoryId: 2, title: "Add fun stuff", description: "Add animations", assignedTo: "Canyon" },
-      { id: 5, categoryId: 3, title: "Setup dev environment", description: "Setup VS code for development", assignedTo: "Eric" }
-    ];
-
-    return { categories, tasks };
+    return { categories };
   }
 
   // Overrides the genId method to ensure that a hero always has an id.

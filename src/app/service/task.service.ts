@@ -13,18 +13,19 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class TaskService {
-  private taskUrl = 'http://localhost:4200/api/tasks';
+  private taskUrl = 'http://localhost:4200/api/categories';
 
   constructor(private http: HttpClient, private logger: NGXLogger) { }
 
   getTasks(categoryId: number): Observable<Task[]> {
-    const params = new HttpParams().set('categoryId', categoryId.toString());
-    return this.http.get<Task[]>(this.taskUrl, { params: params }).pipe(
+    let url = `${this.taskUrl}/${categoryId}/`;
+    return this.http.get<Task[]>(url, httpOptions).pipe(
       catchError(this.handleError<Task[]>('getTasks', []))
     );
   }
 
   addTask(newTask: Task): Observable<Task> {
+
     return this.http.post<Task>(this.taskUrl, newTask, httpOptions).pipe(
       catchError(this.handleError<Task>('addTask')));
   }

@@ -1,33 +1,31 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../model/task';
 import { Category } from '../model/category';
-import { TaskService } from '../service/task.service';
+import { CategoryService } from '../service/category.service';
 
 @Component({
   selector: 'app-category-detail',
   templateUrl: './category-detail.component.html',
   styleUrls: ['./category-detail.component.css'],
-  providers: [TaskService]
 })
 export class CategoryDetailComponent implements OnInit {
-  tasks: Task[];
-  readonly: string;
-
   @Input() category: Category;
-  constructor(private taskService: TaskService) {
-    this.tasks = [];
+  readonly: string;
+  currentTaskId: number;
+
+  constructor(private categoryService: CategoryService) {
     this.readonly = 'true';
   }
 
   ngOnInit() {
     this.getTasks();
+    this.currentTaskId = this.category.tasks.length + 1;
   }
 
   getTasks(): void {
-    this.taskService.getTasks(this.category.id).subscribe(tasks => {
-      console.log(tasks);
-      this.tasks = tasks;
-    });
+    this.categoryService.getCategoryById(this.category.id).subscribe(category => {
+      this.category.tasks = category["tasks"];
+    })
   }
 
   getTitle(): string {
@@ -36,8 +34,16 @@ export class CategoryDetailComponent implements OnInit {
 
   // TODO: this should be adding / subscribing to the InMemoryDataService
   addTask() {
-    this.taskService.addTask({ categoryId: this.category.id, title: 'test', description: 'test', assignedTo: 'test' } as Task)
-      .subscribe(newTask => this.tasks.push(newTask));
+    this.category.tasks.push({ id: this.currentTaskId, title: 'test', description: 'test', assignedTo: 'test' } as Task);
+    this.categoryService.updateCategory(this.category).subscribe();
+    this.getTasks();
+    this.currentTaskId++;
+  }
+
+  deleteTask(task: Task) {
+    this.category.tasks = this.category.tasks.filter(t => t.id !== task.id);
+    this.categoryService.updateCategory(this.category).subscribe();
+    this.getTasks();
   }
 
   toggleEdit() {

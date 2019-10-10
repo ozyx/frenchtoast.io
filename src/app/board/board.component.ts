@@ -29,7 +29,7 @@ export class BoardComponent implements OnInit {
   }
 
   addCategory() {
-    this.categoryService.addCategory({ title: '' } as Category)
+    this.categoryService.addCategory({ title: '', tasks: [] } as Category)
       .subscribe(newCategory => this.categories.push(newCategory));
   }
 
