@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../model/task';
 import { Category } from '../model/category';
 import { CategoryService } from '../service/category.service';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-category-detail',
