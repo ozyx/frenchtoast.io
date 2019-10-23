@@ -5,8 +5,7 @@
             ref: https://stackoverflow.com/a/22772518 -->
         <form onsubmit="return false" class="add-category">
             <mat-form-field color="accent">
-                <input matInput #categoryName placeholder="Category Name" value="{{this.getTitle()}}"
-                    readonly="{{this.readonly}}">
+                <input matInput #categoryName placeholder="Category Name" value="{{this.getTitle()}}" readonly="{{this.readonly}}">
             </mat-form-field>
             <button mat-icon-button (click)="toggleEdit()">
                 <mat-icon>edit</mat-icon>
@@ -15,7 +14,7 @@
     </mat-card-title>
     <div class="task-container">
         <div class="task" *ngFor="let task of this.category.tasks">
-            <app-task-detail [task]="task" (dblclick)="deleteTask(task)"></app-task-detail>
+            <app-task-detail [task]="task" (deleteThisTask)="deleteTask($event)"></app-task-detail>
         </div>
     </div>
     <mat-card-footer>
