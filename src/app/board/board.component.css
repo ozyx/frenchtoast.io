@@ -12,6 +12,11 @@
     bottom: 20px;
 }
 
+#category-lists {
+    display: flex;
+    flex-flow: row;
+}
+
 .board {
     display: flex;
     flex-flow: row nowrap;

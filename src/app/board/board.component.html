@@ -2,7 +2,7 @@
     <button color="accent" mat-icon-button (click)="addCategory()">
         <mat-icon>add</mat-icon>
     </button>
-    <div cdkDropListGroup>
+    <div cdkDropListGroup id="category-lists">
         <mat-card class="category" *ngFor="let category of categories">
             <button id="delete-category" mat-icon-button aria-label="Delete a category"
                 (click)="deleteCategory(category.id)">
