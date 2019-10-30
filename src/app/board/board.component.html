@@ -2,10 +2,13 @@
     <button color="accent" mat-icon-button (click)="addCategory()">
         <mat-icon>add</mat-icon>
     </button>
-    <mat-card class="category" *ngFor="let category of categories">
-        <button id="delete-category" mat-icon-button aria-label="Delete a category" (click)="deleteCategory(category.id)">
-            <mat-icon>delete</mat-icon>
-        </button>
-        <app-category-detail [category]="category"></app-category-detail>
-    </mat-card>
+    <div cdkDropListGroup>
+        <mat-card class="category" *ngFor="let category of categories">
+            <button id="delete-category" mat-icon-button aria-label="Delete a category"
+                (click)="deleteCategory(category.id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+            <app-category-detail [category]="category"></app-category-detail>
+        </mat-card>
+    </div>
 </div>
