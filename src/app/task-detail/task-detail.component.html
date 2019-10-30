@@ -1,4 +1,4 @@
-<mat-card tabindex="0" class="task">
+<mat-card tabindex="0" class="task" (dblclick)="openEditDialog()">
     <mat-card-title-group>
         <mat-card-title matLine>{{ task.title }}</mat-card-title>
         <button id="delete-task" mat-icon-button aria-label="Delete a task" (click)="deleteTask()">

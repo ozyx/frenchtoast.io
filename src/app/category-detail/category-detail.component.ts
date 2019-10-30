@@ -2,7 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../model/task';
 import { Category } from '../model/category';
 import { CategoryService } from '../service/category.service';
+import { MatDialog } from '@angular/material/dialog';
 import { moveItemInArray, CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
+import { EditTaskModalWindowComponent } from '../edit-task-modal-window/edit-task-modal-window.component';
 
 @Component({
   selector: 'app-category-detail',
@@ -14,7 +16,8 @@ export class CategoryDetailComponent implements OnInit {
   readonly: string;
   currentTaskId: number;
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService,
+              public dialog: MatDialog) {
     this.readonly = 'true';
   }
 
@@ -55,5 +58,14 @@ export class CategoryDetailComponent implements OnInit {
     } else {
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     }
+  }
+
+  openDialog(task: Task)  {
+    console.log('test');
+    const dialogRef = this.dialog.open(EditTaskModalWindowComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }
