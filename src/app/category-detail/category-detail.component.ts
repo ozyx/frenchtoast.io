@@ -59,13 +59,4 @@ export class CategoryDetailComponent implements OnInit {
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     }
   }
-
-  openDialog(task: Task)  {
-    console.log('test');
-    const dialogRef = this.dialog.open(EditTaskModalWindowComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
 }
