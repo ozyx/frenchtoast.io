@@ -2,9 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../model/task';
 import { Category } from '../model/category';
 import { CategoryService } from '../service/category.service';
-import { MatDialog } from '@angular/material/dialog';
 import { moveItemInArray, CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
-import { EditTaskModalWindowComponent } from '../edit-task-modal-window/edit-task-modal-window.component';
 
 @Component({
   selector: 'app-category-detail',
@@ -16,8 +14,7 @@ export class CategoryDetailComponent implements OnInit {
   readonly: string;
   currentTaskId: number;
 
-  constructor(private categoryService: CategoryService,
-              public dialog: MatDialog) {
+  constructor(private categoryService: CategoryService) {
     this.readonly = 'true';
   }
 
@@ -36,7 +33,6 @@ export class CategoryDetailComponent implements OnInit {
     return this.category.title;
   }
 
-  // TODO: this should be adding / subscribing to the InMemoryDataService
   addTask() {
     this.category.tasks.push({ id: this.currentTaskId, title: 'test', description: 'test', assignedTo: 'test' } as Task);
     this.categoryService.updateCategory(this.category).subscribe(() => this.getTasks());
