@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../model/task';
 import { Category } from '../model/category';
 import { CategoryService } from '../service/category.service';
+import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-category-detail',
@@ -46,5 +47,9 @@ export class CategoryDetailComponent implements OnInit {
 
   toggleEdit() {
     this.readonly = this.readonly === 'true' ? 'false' : 'true';
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.category.tasks, event.previousIndex, event.currentIndex);
   }
 }
