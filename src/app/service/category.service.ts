@@ -4,7 +4,6 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { NGXLogger } from 'ngx-logger';
-import { Task } from '../model/task';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -20,37 +19,45 @@ export class CategoryService {
   }
 
   getCategories(): Observable<Category[]> {
+    const info = 'CategoryService.getCategories()';
     return this.http.get<Category[]>(this.categoriesUrl).pipe(
-      catchError(this.handleError<Category[]>('getCategories', []))
+      tap(_ => this.logger.log(info)),
+      catchError(this.handleError<Category[]>(info, []))
     );
   }
 
   getCategoryById(id: number): Observable<Category> {
     const url = `${this.categoriesUrl}/${id}`;
+    const info = `CategoryService.getCategoryById(id: ${id})`;
     return this.http.get<Category>(url, httpOptions).pipe(
-      catchError(this.handleError<Category>('getCategoryById'))
+      tap(_ => this.logger.log(info)),
+      catchError(this.handleError<Category>(info))
     );
   }
 
   addCategory(newCategory: Category): Observable<Category> {
+    const info = 'addCategory()';
     return this.http.post<Category>(this.categoriesUrl, newCategory, httpOptions).pipe(
-      catchError(this.handleError<Category>('getCategoryById'))
+      tap(_ => this.logger.log(info)),
+      catchError(this.handleError<Category>(info))
     );
   }
 
   deleteCategory(id: number): Observable<Category> {
     const url = `${this.categoriesUrl}/${id}`;
+    const info = `deleteCategory(id: ${id})`;
     return this.http.delete<Category>(url, httpOptions).pipe(
-      tap(_ => this.logger.log(`deleted category id=${id}`)),
-      catchError(this.handleError<Category>(`deleteCategory(${id})`))
+      tap(_ => this.logger.log(info)),
+      catchError(this.handleError<Category>(info))
     );
   }
 
   updateCategory(category: Category) {
     const url = `${this.categoriesUrl}/${category.id}`;
+    const info = `updateCategory(${category.id})`;
     return this.http.put<Category>(url, category, httpOptions).pipe(
-      tap(_ => this.logger.log(`update category id=${category.id}`)),
-      catchError(this.handleError<Category>(`updateCategory(${category.id})`))
+      tap(_ => this.logger.log(info)),
+      catchError(this.handleError<Category>(info))
     );
   }
 
@@ -63,10 +70,9 @@ export class CategoryService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
 
-      // TODO: send the error to remote logging infrastructure
-      this.logger.error(error); // log to console instead
+      // send the error to remote logging infrastructure
+      this.logger.error(error);
 
-      // TODO: better job of transforming error for user consumption
       this.logger.log(`${operation} failed: ${error.message}`);
 
       // Let the app keep running by returning an empty result.
