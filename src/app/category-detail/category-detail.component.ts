@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Guid } from '../util/util';
 import { Task } from '../model/task';
 import { Category } from '../model/category';
 import { CategoryService } from '../service/category.service';
@@ -12,7 +13,6 @@ import { moveItemInArray, CdkDragDrop, transferArrayItem } from '@angular/cdk/dr
 export class CategoryDetailComponent implements OnInit {
   @Input() category: Category;
   readonly: string;
-  currentTaskId: number;
 
   constructor(private categoryService: CategoryService) {
     this.readonly = 'true';
@@ -20,7 +20,6 @@ export class CategoryDetailComponent implements OnInit {
 
   ngOnInit() {
     this.getTasks();
-    this.currentTaskId = this.category.tasks.length + 1;
   }
 
   getTasks(): void {
@@ -34,9 +33,8 @@ export class CategoryDetailComponent implements OnInit {
   }
 
   addTask() {
-    this.category.tasks.push({ id: this.currentTaskId, title: 'test', description: 'test', assignedTo: 'test' } as Task);
+    this.category.tasks.push({ id: Guid.newGuid(), title: 'test', description: 'test', assignedTo: 'test' } as Task);
     this.categoryService.updateCategory(this.category).subscribe(() => this.getTasks());
-    this.currentTaskId++;
   }
 
   deleteTask(task: Task) {
