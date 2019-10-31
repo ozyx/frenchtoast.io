@@ -25,15 +25,14 @@ export class CategoryDetailComponent implements OnInit {
 
   getTasks(): void {
     this.categoryService.getCategoryById(this.category.id).subscribe(category => {
-      this.category.tasks = category["tasks"];
-    })
+      this.category.tasks = category.tasks;
+    });
   }
 
   getTitle(): string {
     return this.category.title;
   }
 
-  // TODO: this should be adding / subscribing to the InMemoryDataService
   addTask() {
     this.category.tasks.push({ id: this.currentTaskId, title: 'test', description: 'test', assignedTo: 'test' } as Task);
     this.categoryService.updateCategory(this.category).subscribe(() => this.getTasks());
