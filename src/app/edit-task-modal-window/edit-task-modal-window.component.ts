@@ -12,9 +12,7 @@ export class EditTaskModalWindowComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) data) {
     this.task = data;
-    console.log(this.task.title);
-
-   }
+  }
 
   ngOnInit() {
   }

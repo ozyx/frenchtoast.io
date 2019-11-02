@@ -25,6 +25,6 @@ export class TaskDetailComponent implements OnInit {
 
   openEditDialog() {
     // this.editTask.emit(this.task);
-    const dialogRef = this.dialog.open(EditTaskModalWindowComponent, {data: Task});
+    const dialogRef = this.dialog.open(EditTaskModalWindowComponent, {data: this.task});
   }
 }
