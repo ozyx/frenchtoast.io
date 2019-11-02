@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit, Input, Inject } from '@angular/core';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Task } from '../model/task';
 
 @Component({
   selector: 'app-edit-task-modal-window',
@@ -7,8 +8,13 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./edit-task-modal-window.component.css']
 })
 export class EditTaskModalWindowComponent implements OnInit {
+  task: Task;
 
-  constructor() { }
+  constructor(@Inject(MAT_DIALOG_DATA) data) {
+    this.task = data;
+    console.log(this.task.title);
+
+   }
 
   ngOnInit() {
   }

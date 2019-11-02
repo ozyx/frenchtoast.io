@@ -11,6 +11,7 @@ import { EditTaskModalWindowComponent } from '../edit-task-modal-window/edit-tas
 export class TaskDetailComponent implements OnInit {
   @Input() task: Task;
   @Output() deleteThisTask = new EventEmitter();
+  @Output() editTask = new EventEmitter();
 
   constructor(public dialog: MatDialog) { }
 
@@ -23,6 +24,7 @@ export class TaskDetailComponent implements OnInit {
   }
 
   openEditDialog() {
-    const dialogRef = this.dialog.open(EditTaskModalWindowComponent);
+    // this.editTask.emit(this.task);
+    const dialogRef = this.dialog.open(EditTaskModalWindowComponent, {data: Task});
   }
 }
