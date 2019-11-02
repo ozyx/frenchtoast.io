@@ -27,6 +27,7 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { HeaderComponent } from './header/header.component';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { EditTaskModalWindowComponent } from './edit-task-modal-window/edit-task-modal-window.component';
+import { AboutUsModalWindowComponent } from './about-us-modal-window/about-us-modal-window.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { EditTaskModalWindowComponent } from './edit-task-modal-window/edit-task
     FooterComponent,
     TaskDetailComponent,
     HeaderComponent,
+    AboutUsModalWindowComponent,
     EditTaskModalWindowComponent
   ],
   imports: [
@@ -70,7 +72,8 @@ import { EditTaskModalWindowComponent } from './edit-task-modal-window/edit-task
   providers: [],
   bootstrap: [AppComponent],
   entryComponents:  [
-    EditTaskModalWindowComponent
+    EditTaskModalWindowComponent,
+    AboutUsModalWindowComponent
   ]
 })
 export class AppModule {

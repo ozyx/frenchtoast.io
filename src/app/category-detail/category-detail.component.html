@@ -12,8 +12,9 @@
             </button>
         </form>
     </mat-card-title>
-    <div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="this.category.tasks" class="task-container" (cdkDropListDropped)="drop($event)">
-        <div class="task" *ngFor="let task of this.category.tasks" cdkDrag>
+    <div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="this.category.tasks" class="task-container"
+        (cdkDropListDropped)="drop($event)">
+        <div class="task" cdkDrag [cdkDragData]="task" *ngFor="let task of this.category.tasks">
             <app-task-detail [task]="task" (deleteThisTask)="deleteTask($event)"></app-task-detail>
         </div>
     </div>
