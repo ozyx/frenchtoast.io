@@ -12,17 +12,14 @@ export class EditTaskModalWindowComponent implements OnInit {
   task: Task;
 
   constructor(private dialogRef: MatDialogRef<EditTaskModalWindowComponent>,
-              @Inject(MAT_DIALOG_DATA) data) {
+              @Inject(MAT_DIALOG_DATA) data: Task) {
     this.task = data;
   }
 
   ngOnInit() {
   }
 
-  Testing() {
-    this.task.title = (document.getElementById('title-edit') as HTMLInputElement).value;
-    this.task.assignedTo = (document.getElementById('assigned-to-edit') as HTMLInputElement).value;
-    this.task.description = (document.getElementById('description-edit') as HTMLInputElement).value;
+  updateTask() {
     this.updatedTask.emit(this.task);
   }
 }

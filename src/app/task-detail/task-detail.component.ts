@@ -11,6 +11,8 @@ import { EditTaskModalWindowComponent } from '../edit-task-modal-window/edit-tas
 export class TaskDetailComponent implements OnInit {
   @Input() task: Task;
   @Output() deleteThisTask = new EventEmitter();
+  @Output() updateTask = new EventEmitter();
+  @Output() cancel = new EventEmitter();
 
   constructor(public dialog: MatDialog) { }
 
@@ -24,21 +26,25 @@ export class TaskDetailComponent implements OnInit {
 
   openEditDialog() {
 
-    const dialogConfig = new MatDialogConfig();
-
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-
-    dialogConfig.data = {
-      title: this.task.title,
-      assignedTo: this.task.assignedTo,
-      description: this.task.description
+    const dialogConfig = {
+      disableClose: true,
+      autoFocus: true,
+      data: this.task
     };
 
     const dialogRef = this.dialog.open(EditTaskModalWindowComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-        data => console.log(`Dialog output: ${data}`)
+      data => {
+        // user hits save
+        if (data) {
+          this.updateTask.emit(this.task);
+        } else {
+          // user hits cancel
+          // (this just triggers a "getTasks())")
+          this.cancel.emit();
+        }
+      }
     );
   }
 }
