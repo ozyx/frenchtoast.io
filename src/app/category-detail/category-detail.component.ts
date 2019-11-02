@@ -37,6 +37,15 @@ export class CategoryDetailComponent implements OnInit {
     this.categoryService.updateCategory(this.category).subscribe(() => this.getTasks());
   }
 
+  updateTask(task: Task) {
+    for (let t of this.category.tasks) {
+      if (t.id === task.id) {
+        t = task;
+      }
+    }
+    this.categoryService.updateCategory(this.category).subscribe(() => this.getTasks());
+  }
+
   deleteTask(task: Task) {
     this.category.tasks = this.category.tasks.filter(t => t.id !== task.id);
     this.categoryService.updateCategory(this.category).subscribe(() => this.getTasks());

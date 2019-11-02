@@ -16,9 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { AppRoutingModule } from './app-routing.module';
-
 import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
 import { CategoryDetailComponent } from './category-detail/category-detail.component';
@@ -26,7 +24,9 @@ import { FooterComponent } from './footer/footer.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { HeaderComponent } from './header/header.component';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { EditTaskModalWindowComponent } from './edit-task-modal-window/edit-task-modal-window.component';
 import { AboutUsModalWindowComponent } from './about-us-modal-window/about-us-modal-window.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,12 +36,14 @@ import { AboutUsModalWindowComponent } from './about-us-modal-window/about-us-mo
     FooterComponent,
     TaskDetailComponent,
     HeaderComponent,
-    AboutUsModalWindowComponent
+    AboutUsModalWindowComponent,
+    EditTaskModalWindowComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     MatCardModule,
     MatDialogModule,
@@ -70,6 +72,7 @@ import { AboutUsModalWindowComponent } from './about-us-modal-window/about-us-mo
   providers: [],
   bootstrap: [AppComponent],
   entryComponents:  [
+    EditTaskModalWindowComponent,
     AboutUsModalWindowComponent
   ]
 })
