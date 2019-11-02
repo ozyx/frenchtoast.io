@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { Task } from '../model/task';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { EditTaskModalWindowComponent } from '../edit-task-modal-window/edit-task-modal-window.component';
 
 @Component({
@@ -11,7 +11,6 @@ import { EditTaskModalWindowComponent } from '../edit-task-modal-window/edit-tas
 export class TaskDetailComponent implements OnInit {
   @Input() task: Task;
   @Output() deleteThisTask = new EventEmitter();
-  @Output() editTask = new EventEmitter();
 
   constructor(public dialog: MatDialog) { }
 
@@ -24,7 +23,22 @@ export class TaskDetailComponent implements OnInit {
   }
 
   openEditDialog() {
-    // this.editTask.emit(this.task);
-    const dialogRef = this.dialog.open(EditTaskModalWindowComponent, {data: this.task});
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+      title: this.task.title,
+      assignedTo: this.task.assignedTo,
+      description: this.task.description
+    };
+
+    const dialogRef = this.dialog.open(EditTaskModalWindowComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+        data => console.log(`Dialog output: ${data}`)
+    );
   }
 }
