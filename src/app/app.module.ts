@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -25,6 +26,7 @@ import { FooterComponent } from './footer/footer.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
 import { HeaderComponent } from './header/header.component';
 import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
+import { AboutUsModalWindowComponent } from './about-us-modal-window/about-us-modal-window.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
     CategoryDetailComponent,
     FooterComponent,
     TaskDetailComponent,
-    HeaderComponent
+    HeaderComponent,
+    AboutUsModalWindowComponent
   ],
   imports: [
     AppRoutingModule,
@@ -41,6 +44,7 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
     BrowserModule,
     HttpClientModule,
     MatCardModule,
+    MatDialogModule,
     MatDividerModule,
     MatIconModule,
     MatListModule,
@@ -64,7 +68,10 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
     )]
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents:  [
+    AboutUsModalWindowComponent
+  ]
 })
 export class AppModule {
 }
