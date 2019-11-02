@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { AboutUsModalWindowComponent } from '../about-us-modal-window/about-us-modal-window.component';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
+  openAboutUs() {
+    const dialogRef = this.dialog.open(AboutUsModalWindowComponent, {maxWidth: "30%"});
+  }
 }
