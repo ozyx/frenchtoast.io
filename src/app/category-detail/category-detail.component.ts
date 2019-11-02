@@ -25,8 +25,8 @@ export class CategoryDetailComponent implements OnInit {
 
   getTasks(): void {
     this.categoryService.getCategoryById(this.category.id).subscribe(category => {
-      this.category.tasks = category["tasks"];
-    })
+      this.category.tasks = category.tasks;
+    });
   }
 
   getTitle(): string {

@@ -23,7 +23,6 @@ export class EditTaskModalWindowComponent implements OnInit {
     this.task.title = (document.getElementById('title-edit') as HTMLInputElement).value;
     this.task.assignedTo = (document.getElementById('assigned-to-edit') as HTMLInputElement).value;
     this.task.description = (document.getElementById('description-edit') as HTMLInputElement).value;
-  
     this.updatedTask.emit(this.task);
   }
 }

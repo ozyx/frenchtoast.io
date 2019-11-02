@@ -10,23 +10,23 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const categories = [
       {
-        id: 1, title: "Backlog",
+        id: 1, title: 'Backlog',
         tasks: [
-          { id: 1, title: "Add login page", description: "Add a simple login page", assignedTo: "Canyon" },
-          { id: 2, title: "Add admin page", description: "Add a simple admin page", assignedTo: "Canyon" },
+          { id: 1, title: 'Add login page', description: 'Add a simple login page', assignedTo: 'Canyon' },
+          { id: 2, title: 'Add admin page', description: 'Add a simple admin page', assignedTo: 'Canyon' },
         ]
       },
       {
-        id: 2, title: "In Progress",
+        id: 2, title: 'In Progress',
         tasks: [
-          { id: 1, title: "Add a toolbar", description: "Add a toolbar", assignedTo: "Jesse" },
-          { id: 2, title: "Add fun stuff", description: "Add animations", assignedTo: "Canyon" }
+          { id: 1, title: 'Add a toolbar', description: 'Add a toolbar', assignedTo: 'Jesse' },
+          { id: 2, title: 'Add fun stuff', description: 'Add animations', assignedTo: 'Canyon' }
         ]
       },
       {
-        id: 3, title: "Done",
+        id: 3, title: 'Done',
         tasks: [
-          { id: 1, title: "Setup dev environment", description: "Setup VS code for development", assignedTo: "Eric" }
+          { id: 1, title: 'Setup dev environment', description: 'Setup VS code for development', assignedTo: 'Eric' }
         ]
       },
     ];
