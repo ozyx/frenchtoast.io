@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
 import { Guid } from '../util/util';
 import { Task } from '../model/task';
 import { Category } from '../model/category';
@@ -12,10 +12,11 @@ import { moveItemInArray, CdkDragDrop, transferArrayItem } from '@angular/cdk/dr
 })
 export class CategoryDetailComponent implements OnInit {
   @Input() category: Category;
-  readonly: string;
+  @ViewChild('categoryName', { static: false }) categoryNameInputElement: ElementRef;
+  readOnly: string;
 
   constructor(private categoryService: CategoryService) {
-    this.readonly = 'true';
+    this.readOnly = 'true';
   }
 
   ngOnInit() {
@@ -51,8 +52,11 @@ export class CategoryDetailComponent implements OnInit {
     this.categoryService.updateCategory(this.category).subscribe(() => this.getTasks());
   }
 
-  toggleEdit() {
-    this.readonly = this.readonly === 'true' ? 'false' : 'true';
+  setReadOnly(isReadOnly: boolean) {
+    this.readOnly = isReadOnly ? 'true' : 'false';
+    if (!isReadOnly) {
+      this.categoryNameInputElement.nativeElement.focus();
+    }
   }
 
   drop(event: CdkDragDrop<string[]>) {

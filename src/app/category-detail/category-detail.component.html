@@ -5,13 +5,16 @@
             so that form submit does not refresh the page. 
             ref: https://stackoverflow.com/a/22772518 -->
             <form onsubmit="return false" class="add-category">
-                <mat-form-field color="accent">
-                    <input matInput #categoryName placeholder="Category Name" value="{{this.getTitle()}}"
-                        readonly="{{this.readonly}}">
-                </mat-form-field>
-                <button mat-icon-button (click)="toggleEdit()">
-                    <mat-icon>edit</mat-icon>
-                </button>
+                <div class="category-name">
+                    <mat-form-field color="accent">
+                        <input matInput #categoryName placeholder="Category Name" value="{{this.getTitle()}}"
+                            readonly="{{this.readOnly}}" (dblclick)="this.setReadOnly(false)"
+                            (keydown.enter)="this.setReadOnly(true)" (blur)="this.setReadOnly(true)">
+                    </mat-form-field>
+                    <button class="edit-category-title" mat-icon-button (click)="this.setReadOnly(false)">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
             </form>
         </mat-card-title>
         <div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="this.category.tasks"

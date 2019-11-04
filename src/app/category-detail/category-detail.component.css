@@ -25,3 +25,12 @@
 .category {
     top: -20px;
 }
+
+.category-name {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-category-title {
+    /* display:flex;*/
+}
