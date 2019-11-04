@@ -1,30 +1,32 @@
 <mat-card tabindex="1" class="category">
-    <mat-card-title>
-        <!-- The "return false" below is a JQuery-free hack to make it 
+    <div class="card-contents">
+        <mat-card-title>
+            <!-- The "return false" below is a JQuery-free hack to make it 
             so that form submit does not refresh the page. 
             ref: https://stackoverflow.com/a/22772518 -->
-        <form onsubmit="return false" class="add-category">
-            <mat-form-field color="accent">
-                <input matInput #categoryName placeholder="Category Name" value="{{this.getTitle()}}"
-                    readonly="{{this.readonly}}">
-            </mat-form-field>
-            <button mat-icon-button (click)="toggleEdit()">
-                <mat-icon>edit</mat-icon>
-            </button>
-        </form>
-    </mat-card-title>
-    <div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="this.category.tasks" class="task-container"
-        (cdkDropListDropped)="drop($event)">
-        <div class="task" cdkDrag [cdkDragData]="task" *ngFor="let task of this.category.tasks">
-            <app-task-detail [task]="task" (deleteThisTask)="deleteTask($event)" (updateTask)="updateTask($event)"
-                (cancel)="getTasks()"></app-task-detail>
+            <form onsubmit="return false" class="add-category">
+                <mat-form-field color="accent">
+                    <input matInput #categoryName placeholder="Category Name" value="{{this.getTitle()}}"
+                        readonly="{{this.readonly}}">
+                </mat-form-field>
+                <button mat-icon-button (click)="toggleEdit()">
+                    <mat-icon>edit</mat-icon>
+                </button>
+            </form>
+        </mat-card-title>
+        <div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="this.category.tasks"
+            class="task-container" (cdkDropListDropped)="drop($event)">
+            <div class="task" cdkDrag [cdkDragData]="task" *ngFor="let task of this.category.tasks">
+                <app-task-detail [task]="task" (deleteThisTask)="deleteTask($event)" (updateTask)="updateTask($event)"
+                    (cancel)="getTasks()"></app-task-detail>
+            </div>
         </div>
+        <mat-card-footer>
+            <div class="add-task">
+                <button mat-fab aria-label="Add a task" (click)="addTask()">
+                    <mat-icon>add</mat-icon>
+                </button>
+            </div>
+        </mat-card-footer>
     </div>
-    <mat-card-footer>
-        <div class="add-task">
-            <button mat-fab aria-label="Add a task" (click)="addTask()">
-                <mat-icon>add</mat-icon>
-            </button>
-        </div>
-    </mat-card-footer>
 </mat-card>

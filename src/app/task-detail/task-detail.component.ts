@@ -35,9 +35,9 @@ export class TaskDetailComponent implements OnInit {
     const dialogRef = this.dialog.open(EditTaskModalWindowComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
-      data => {
+      accept => {
         // user hits save
-        if (data) {
+        if (accept) {
           this.updateTask.emit(this.task);
         } else {
           // user hits cancel

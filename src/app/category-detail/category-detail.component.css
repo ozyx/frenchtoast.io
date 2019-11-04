@@ -17,9 +17,9 @@
 }
 
 .add-task {
-    position: relative;
-    top: -10px;
-    left: 8px;
+    margin: 0 5px 5px 0;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .category {
