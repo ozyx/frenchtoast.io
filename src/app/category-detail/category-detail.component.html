@@ -6,8 +6,8 @@
             ref: https://stackoverflow.com/a/22772518 -->
             <form onsubmit="return false" class="add-category">
                 <div class="category-name">
-                    <mat-form-field color="accent">
-                        <input matInput #categoryName placeholder="Category Name" value="{{this.getTitle()}}"
+                    <mat-form-field color="accent" floatLabel="never">
+                        <input matInput #categoryName autocomplete="off" placeholder="Category Name" value="{{this.getTitle()}}"
                             readonly="{{this.readOnly}}" (dblclick)="this.setReadOnly(false)"
                             (keydown.enter)="this.setReadOnly(true)" (blur)="this.setReadOnly(true)">
                     </mat-form-field>
