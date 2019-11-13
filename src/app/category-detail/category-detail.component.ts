@@ -65,5 +65,6 @@ export class CategoryDetailComponent implements OnInit {
     } else {
       transferArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
     }
+    this.categoryService.updateCategory(this.category).subscribe(() => this.getTasks());
   }
 }
