@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { Task } from '../model/task';
 import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { EditTaskModalWindowComponent } from '../edit-task-modal-window/edit-task-modal-window.component';
+import { DeleteTaskConfirmationComponent } from '../delete-task-confirmation/delete-task-confirmation.component';
 
 @Component({
   selector: 'app-task-detail',
@@ -19,15 +20,21 @@ export class TaskDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-  openDeleteDialog()  {
-    // open delete modal window
-    // Displays "Are you sure? Yes/No"
-    // If yes call deleteTask()
-  }
-
-
   deleteTask() {
-    this.deleteThisTask.emit(this.task);
+    const dialogConfig = {
+      autoFocus: true,
+    };
+
+    const dialogRef = this.dialog.open(DeleteTaskConfirmationComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      accept => {
+        // user hits save
+        if (accept) {
+          this.deleteThisTask.emit(this.task);
+        }
+      }
+    );
   }
 
   openEditDialog() {
