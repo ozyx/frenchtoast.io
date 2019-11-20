@@ -1,18 +1,19 @@
 <h1 mat-dialog-title>Edit Task</h1>
 <mat-dialog-content>
     <div>
-        <mat-form-field color="accent">
+        <mat-form-field class="task-edit-element" color="accent">
             <input id="title-edit" matInput placeholder="Title" [(ngModel)]="this.task.title">
         </mat-form-field>
     </div>
     <div>
-        <mat-form-field color="accent">
+        <mat-form-field class="task-edit-element" color="accent">
             <input id="assigned-to-edit" matInput placeholder="Assigned To" [(ngModel)]="this.task.assignedTo">
         </mat-form-field>
     </div>
     <div>
-        <mat-form-field color="accent">
-            <input id="description-edit" matInput placeholder="Description" [(ngModel)]="this.task.description">
+        <mat-form-field class="task-edit-element" color="accent">
+            <textarea cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="10"
+                matInput placeholder="Description" [(ngModel)]="this.task.description"></textarea>
         </mat-form-field>
     </div>
 </mat-dialog-content>
