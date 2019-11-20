@@ -7,9 +7,7 @@
             <form onsubmit="return false" class="add-category">
                 <div class="category-name">
                     <mat-form-field color="accent" floatLabel="never">
-                        <input matInput #categoryName autocomplete="off" placeholder="Category Name" value="{{this.getTitle()}}"
-                            readonly="{{this.readOnly}}" (dblclick)="this.setReadOnly(false)"
-                            (keydown.enter)="this.setReadOnly(true)" (blur)="this.setReadOnly(true)">
+                        <input matInput #categoryName autocomplete="off" placeholder="Category Name" value="{{this.getTitle()}}" readonly="{{this.readOnly}}" (dblclick)="this.setReadOnly(false)" (keydown.enter)="this.setReadOnly(true)" (blur)="this.setReadOnly(true)">
                     </mat-form-field>
                     <button class="edit-category-title" mat-icon-button (click)="this.setReadOnly(false)">
                         <mat-icon>edit</mat-icon>
@@ -17,16 +15,14 @@
                 </div>
             </form>
         </mat-card-title>
-        <div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="this.category.tasks"
-            class="task-container" (cdkDropListDropped)="drop($event)">
+        <div cdkDropList cdkDropListOrientation="horizontal" [cdkDropListData]="this.category.tasks" class="task-container" (cdkDropListDropped)="drop($event)">
             <div class="task" cdkDrag [cdkDragData]="task" *ngFor="let task of this.category.tasks">
-                <app-task-detail [task]="task" (deleteThisTask)="deleteTask($event)" (updateTask)="updateTask($event)"
-                    (cancel)="getTasks()"></app-task-detail>
+                <app-task-detail [task]="task" (deleteThisTask)="deleteTask($event)" (updateTask)="updateTask($event)" (cancel)="getTasks()"></app-task-detail>
             </div>
         </div>
         <mat-card-footer>
             <div class="add-task">
-                <button mat-fab aria-label="Add a task" (click)="addTask()">
+                <button mat-mini-fab aria-label="Add a task" (click)="addTask()">
                     <mat-icon>add</mat-icon>
                 </button>
             </div>

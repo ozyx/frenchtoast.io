@@ -19,6 +19,12 @@ export class TaskDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  openDeleteDialog()  {
+    // open delete modal window
+    // Displays "Are you sure? Yes/No"
+    // If yes call deleteTask()
+  }
+
 
   deleteTask() {
     this.deleteThisTask.emit(this.task);
