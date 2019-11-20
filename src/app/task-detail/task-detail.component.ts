@@ -19,7 +19,6 @@ export class TaskDetailComponent implements OnInit {
   ngOnInit() {
   }
 
-
   deleteTask() {
     this.deleteThisTask.emit(this.task);
   }
@@ -27,7 +26,6 @@ export class TaskDetailComponent implements OnInit {
   openEditDialog() {
 
     const dialogConfig = {
-      disableClose: true,
       autoFocus: true,
       data: this.task
     };
