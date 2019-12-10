@@ -1,9 +1,11 @@
-<mat-card tabindex="0" class="task" (click)="openEditDialog()">
+<mat-card tabindex="0" class="task">
     <mat-card-title-group>
-        <mat-card-title matLine>{{ task.title }}</mat-card-title>
+        <div class="task-clickable" (click)="openEditDialog()">
+            <mat-card-title matLine>{{ task.title }}</mat-card-title>
+            <mat-card-subtitle matLine>Assigned to: {{ task.assignedTo }}</mat-card-subtitle>
+        </div>
         <button id="delete-task" mat-icon-button aria-label="Delete a task" (click)="deleteTask()">
             <mat-icon>delete</mat-icon>
         </button>
-        <mat-card-subtitle matLine>Assigned to: {{ task.assignedTo }}</mat-card-subtitle>
     </mat-card-title-group>
 </mat-card>
