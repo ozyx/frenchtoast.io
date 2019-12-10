@@ -27,6 +27,7 @@ import { LoggerModule, NgxLoggerLevel } from 'ngx-logger';
 import { EditTaskModalWindowComponent } from './edit-task-modal-window/edit-task-modal-window.component';
 import { AboutUsModalWindowComponent } from './about-us-modal-window/about-us-modal-window.component';
 import { FormsModule } from '@angular/forms';
+import { DeleteTaskConfirmationComponent } from './delete-task-confirmation/delete-task-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FormsModule } from '@angular/forms';
     TaskDetailComponent,
     HeaderComponent,
     AboutUsModalWindowComponent,
-    EditTaskModalWindowComponent
+    EditTaskModalWindowComponent,
+    DeleteTaskConfirmationComponent
   ],
   imports: [
     AppRoutingModule,
@@ -72,6 +74,7 @@ import { FormsModule } from '@angular/forms';
   providers: [],
   bootstrap: [AppComponent],
   entryComponents:  [
+    DeleteTaskConfirmationComponent,
     EditTaskModalWindowComponent,
     AboutUsModalWindowComponent
   ]
