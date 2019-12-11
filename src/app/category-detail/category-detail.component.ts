@@ -41,10 +41,12 @@ export class CategoryDetailComponent implements OnInit {
       width: '30%',
     };
 
+    // Open the "Add Task" dialog window
     const dialogRef = this.dialog.open(EditTaskModalWindowComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
       accept => {
+        // Add the new task and update the view
         if (accept) {
           this.category.tasks.push(accept.data);
           this.categoryService.updateCategory(this.category).subscribe(() => this.getTasks());
