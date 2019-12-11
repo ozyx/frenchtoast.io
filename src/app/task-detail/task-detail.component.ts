@@ -38,7 +38,6 @@ export class TaskDetailComponent implements OnInit {
   }
 
   openEditDialog() {
-
     const dialogConfig = {
       autoFocus: true,
       data: { task: this.task, title: 'Edit Task' },
@@ -47,15 +46,25 @@ export class TaskDetailComponent implements OnInit {
 
     const dialogRef = this.dialog.open(EditTaskModalWindowComponent, dialogConfig);
 
+    // Keep track of original values to avoid an extra call to "getTasks()"
+    const id = this.task.id;
+    const title = this.task.title;
+    const description = this.task.description;
+    const assignedTo = this.task.assignedTo;
+
     dialogRef.afterClosed().subscribe(
       accept => {
         // user hits save
+        // emit the task data to the specific category,
+        // which then calls to categoryService to update the task
         if (accept) {
           this.updateTask.emit(this.task);
         } else {
-          // user hits cancel
-          // (this just triggers a "getTasks())")
-          this.cancel.emit();
+          // user hits cancel, restore original values
+          this.task.id = id;
+          this.task.title = title;
+          this.task.description = description;
+          this.task.assignedTo = assignedTo;
         }
       }
     );

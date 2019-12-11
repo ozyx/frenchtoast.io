@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, ElementRef, ViewChild } from '@angular/core';
-import { Guid } from '../util/util';
 import { Task } from '../model/task';
 import { Category } from '../model/category';
 import { CategoryService } from '../service/category.service';
@@ -36,10 +35,9 @@ export class CategoryDetailComponent implements OnInit {
   }
 
   addTask() {
-    const newTask = { id: Guid.newGuid(), title: '', description: '', assignedTo: '' } as Task;
     const dialogConfig = {
       autoFocus: true,
-      data: { task: newTask, title: 'New Task' },
+      data: { title: 'New Task' },
       width: '30%',
     };
 
@@ -48,7 +46,7 @@ export class CategoryDetailComponent implements OnInit {
     dialogRef.afterClosed().subscribe(
       accept => {
         if (accept) {
-          this.category.tasks.push(newTask);
+          this.category.tasks.push(accept.data);
           this.categoryService.updateCategory(this.category).subscribe(() => this.getTasks());
         }
       });

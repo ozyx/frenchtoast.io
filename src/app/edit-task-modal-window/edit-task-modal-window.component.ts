@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Input, Inject, Output } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Task } from '../model/task';
 
 @Component({
@@ -13,7 +13,7 @@ export class EditTaskModalWindowComponent implements OnInit {
   title: string;
 
   constructor(private dialogRef: MatDialogRef<EditTaskModalWindowComponent>, @Inject(MAT_DIALOG_DATA) data: any) {
-    this.task = data.task;
+    this.task = data.task || new Task();
     this.title = data.title;
   }
 
@@ -22,5 +22,6 @@ export class EditTaskModalWindowComponent implements OnInit {
 
   updateTask() {
     this.updatedTask.emit(this.task);
+    this.dialogRef.close({ event: 'close', data: this.task });
   }
 }
