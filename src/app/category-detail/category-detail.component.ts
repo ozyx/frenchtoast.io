@@ -91,7 +91,7 @@ export class CategoryDetailComponent implements OnInit {
 
   /**
    * Toggle ReadOnly parameter on the category title input
-   * @param isReadOnly
+   * @param isReadOnly true if readonly
    */
   setReadOnly(isReadOnly: boolean) {
     this.readOnly = isReadOnly ? 'true' : 'false';
@@ -102,7 +102,7 @@ export class CategoryDetailComponent implements OnInit {
 
   /**
    * Handle moving tasks between categories when drag & dropped
-   * @param event 
+   * @param event the event
    */
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
