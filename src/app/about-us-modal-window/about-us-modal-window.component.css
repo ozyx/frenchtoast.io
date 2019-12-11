@@ -1,8 +1,22 @@
-mat-card img{
-    object-fit: cover; /*this makes the image in src fit to the size specified below*/
-    width: 75px; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
-    height: 75px;
-  }
+.mat-card {
+  min-height: 0;
+}
+
+.mat-card img {
+  object-fit: cover;
+  /*this makes the image in src fit to the size specified below*/
+  width: 70px;
+  /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+  height: 70px;
+}
+
+.mat-dialog-title {
+  font-size: 28px;
+  /* text-align: center; */
+  font-family: 'Lilita One', cursive;
+  float: left;
+  margin-top: 10px;
+}
 
 .mat-card-header {
   margin-bottom: 10px;
