@@ -6,7 +6,6 @@ import { CategoryService } from '../service/category.service';
 import { moveItemInArray, CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { EditTaskModalWindowComponent } from '../edit-task-modal-window/edit-task-modal-window.component';
-import { empty } from 'rxjs';
 
 @Component({
   selector: 'app-category-detail',
