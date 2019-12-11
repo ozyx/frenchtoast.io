@@ -3,7 +3,7 @@ import { Category } from '../model/category';
 import { CategoryService } from '../service/category.service';
 import { NGXLogger } from 'ngx-logger';
 import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
-import { DeleteCategoryConfirmationComponent } from '../delete-category-confirmation/delete-category-confirmation.component';
+import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 
 @Component({
   selector: 'app-board',
@@ -42,7 +42,7 @@ export class BoardComponent implements OnInit {
       autoFocus: true,
     };
 
-    const dialogRef = this.dialog.open(DeleteCategoryConfirmationComponent, dialogConfig);
+    const dialogRef = this.dialog.open(DeleteConfirmationComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
       accept => {
