@@ -34,7 +34,6 @@ export class BoardComponent implements OnInit {
   }
 
   deleteCategory(id: number) {
-    this.logger.log(`deleteCategory(${id})  called`);
     this.categories = this.categories.filter(c => c.id !== id);
     this.categoryService.deleteCategory(id).subscribe();
   }
