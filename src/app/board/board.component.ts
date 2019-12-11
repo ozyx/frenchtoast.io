@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Category } from '../model/category';
 import { CategoryService } from '../service/category.service';
 import { NGXLogger } from 'ngx-logger';
@@ -32,6 +32,15 @@ export class BoardComponent implements OnInit {
       });
   }
 
+  getCategoryTitleById(id: number): string {
+    for (const category of this.categories) {
+      if (category.id === id) {
+        return category.title;
+      }
+    }
+    return '';
+  }
+
   addCategory() {
     this.categoryService.addCategory({ title: '', tasks: [] } as Category)
       .subscribe(newCategory => this.categories.push(newCategory));
@@ -40,6 +49,9 @@ export class BoardComponent implements OnInit {
   deleteCategory(id: number) {
     const dialogConfig = {
       autoFocus: true,
+      data: {
+        prompt: `Delete Category "${this.getCategoryTitleById(id)}"?`
+      }
     };
 
     const dialogRef = this.dialog.open(DeleteConfirmationComponent, dialogConfig);

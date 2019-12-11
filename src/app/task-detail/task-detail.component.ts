@@ -23,6 +23,9 @@ export class TaskDetailComponent implements OnInit {
   deleteTask() {
     const dialogConfig = {
       autoFocus: true,
+      data: {
+        prompt: `Delete Task "${this.task.title}"?`
+      }
     };
 
     const dialogRef = this.dialog.open(DeleteConfirmationComponent, dialogConfig);
