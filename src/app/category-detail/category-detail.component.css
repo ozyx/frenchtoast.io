@@ -3,6 +3,8 @@
     flex-direction: column;
     justify-content: space-between;
     min-height: 40px;
+    max-height: 55vh;
+    overflow-y: auto;
 }
 
 .task {
