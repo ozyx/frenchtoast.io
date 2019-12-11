@@ -28,6 +28,7 @@ import { EditTaskModalWindowComponent } from './edit-task-modal-window/edit-task
 import { AboutUsModalWindowComponent } from './about-us-modal-window/about-us-modal-window.component';
 import { FormsModule } from '@angular/forms';
 import { DeleteTaskConfirmationComponent } from './delete-task-confirmation/delete-task-confirmation.component';
+import { DeleteCategoryConfirmationComponent } from './delete-category-confirmation/delete-category-confirmation.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { DeleteTaskConfirmationComponent } from './delete-task-confirmation/dele
     HeaderComponent,
     AboutUsModalWindowComponent,
     EditTaskModalWindowComponent,
-    DeleteTaskConfirmationComponent
+    DeleteTaskConfirmationComponent,
+    DeleteCategoryConfirmationComponent
   ],
   imports: [
     AppRoutingModule,
@@ -75,6 +77,7 @@ import { DeleteTaskConfirmationComponent } from './delete-task-confirmation/dele
   bootstrap: [AppComponent],
   entryComponents:  [
     DeleteTaskConfirmationComponent,
+    DeleteCategoryConfirmationComponent,
     EditTaskModalWindowComponent,
     AboutUsModalWindowComponent
   ]

@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter  } from '@angular/core';
 import { Category } from '../model/category';
 import { CategoryService } from '../service/category.service';
 import { NGXLogger } from 'ngx-logger';
+import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
+import { DeleteCategoryConfirmationComponent } from '../delete-category-confirmation/delete-category-confirmation.component';
 
 @Component({
   selector: 'app-board',
@@ -10,10 +12,12 @@ import { NGXLogger } from 'ngx-logger';
   providers: [CategoryService]
 })
 export class BoardComponent implements OnInit {
+  @Output() deleteThisCategory = new EventEmitter();
+
   categories: Category[] = [];
   title: string;
 
-  constructor(private categoryService: CategoryService, private logger: NGXLogger) {
+  constructor(private categoryService: CategoryService, private logger: NGXLogger, public dialog: MatDialog) {
     this.title = 'Test Board';
   }
 
@@ -34,8 +38,21 @@ export class BoardComponent implements OnInit {
   }
 
   deleteCategory(id: number) {
-    this.logger.log(`deleteCategory(${id})  called`);
-    this.categories = this.categories.filter(c => c.id !== id);
-    this.categoryService.deleteCategory(id).subscribe();
+    const dialogConfig = {
+      autoFocus: true,
+    };
+
+    const dialogRef = this.dialog.open(DeleteCategoryConfirmationComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      accept => {
+        // user hits save
+        if (accept) {
+          this.categories = this.categories.filter(c => c.id !== id);
+          this.categoryService.deleteCategory(id).subscribe();
+        }
+      }
+    );
+
   }
 }
