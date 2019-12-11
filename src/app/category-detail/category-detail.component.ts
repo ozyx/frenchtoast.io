@@ -36,7 +36,7 @@ export class CategoryDetailComponent implements OnInit {
   }
 
   addTask() {
-    let newTask = { id: Guid.newGuid(), title: '', description: '', assignedTo: '' } as Task
+    const newTask = { id: Guid.newGuid(), title: '', description: '', assignedTo: '' } as Task;
     const dialogConfig = {
       autoFocus: true,
       data: { task: newTask, title: 'New Task' },
