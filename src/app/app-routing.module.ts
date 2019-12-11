@@ -11,11 +11,7 @@ const routes: Routes = [
   {
     path: 'board',
     component: BoardComponent
-  },
-  {
-    path: '**',
-    redirectTo: '/board',
-  },
+  }
 ];
 
 @NgModule({
