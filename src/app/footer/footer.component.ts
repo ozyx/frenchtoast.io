@@ -15,6 +15,11 @@ export class FooterComponent implements OnInit {
   }
 
   openAboutUs() {
-    const dialogRef = this.dialog.open(AboutUsModalWindowComponent, { width: '30vw', maxWidth: '50vw', height: '75vh' });
+    const dialogRef = this.dialog.open(AboutUsModalWindowComponent,
+      {
+        width: '80vh',
+        maxWidth: '80vh',
+        height: '70vh'
+      });
   }
 }

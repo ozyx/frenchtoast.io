@@ -49,7 +49,7 @@ export class CategoryDetailComponent implements OnInit {
     const dialogConfig = {
       autoFocus: true,
       data: { title: 'New Task' },
-      width: '30%',
+      width: '80vh',
     };
 
     // Open the "Add Task" dialog window

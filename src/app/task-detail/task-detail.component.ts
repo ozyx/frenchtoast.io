@@ -56,7 +56,7 @@ export class TaskDetailComponent implements OnInit {
     const dialogConfig = {
       autoFocus: true,
       data: { task: this.task, title: 'Edit Task' },
-      width: '30%'
+      width: '80vh',
     };
 
     const dialogRef = this.dialog.open(EditTaskModalWindowComponent, dialogConfig);
