@@ -67,7 +67,7 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
         serverLoggingUrl: '/api/logs',
         level: NgxLoggerLevel.DEBUG,
         serverLogLevel: NgxLoggerLevel.ERROR,
-        disableConsoleLogging: false
+        disableConsoleLogging: true
       }
     )]
   ],
