@@ -10,10 +10,12 @@ import { Task } from '../model/task';
 export class EditTaskModalWindowComponent implements OnInit {
   @Output() updatedTask = new EventEmitter();
   task: Task;
+  title: String;
 
   constructor(private dialogRef: MatDialogRef<EditTaskModalWindowComponent>,
-              @Inject(MAT_DIALOG_DATA) data: Task) {
-    this.task = data;
+    @Inject(MAT_DIALOG_DATA) data: any) {
+    this.task = data.task;
+    this.title = data.title;
   }
 
   ngOnInit() {
