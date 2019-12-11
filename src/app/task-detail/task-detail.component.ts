@@ -41,7 +41,7 @@ export class TaskDetailComponent implements OnInit {
 
     const dialogConfig = {
       autoFocus: true,
-      data: this.task,
+      data: { task: this.task, title: 'Edit Task' },
       width: '30%'
     };
 

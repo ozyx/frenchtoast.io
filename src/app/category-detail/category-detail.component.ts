@@ -4,6 +4,8 @@ import { Task } from '../model/task';
 import { Category } from '../model/category';
 import { CategoryService } from '../service/category.service';
 import { moveItemInArray, CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
+import { MatDialog } from '@angular/material/dialog';
+import { EditTaskModalWindowComponent } from '../edit-task-modal-window/edit-task-modal-window.component';
 
 @Component({
   selector: 'app-category-detail',
@@ -15,7 +17,7 @@ export class CategoryDetailComponent implements OnInit {
   @ViewChild('categoryName', { static: false }) categoryNameInputElement: ElementRef;
   readOnly: string;
 
-  constructor(private categoryService: CategoryService) {
+  constructor(private categoryService: CategoryService, public dialog: MatDialog) {
     this.readOnly = 'true';
   }
 
@@ -34,8 +36,22 @@ export class CategoryDetailComponent implements OnInit {
   }
 
   addTask() {
-    this.category.tasks.push({ id: Guid.newGuid(), title: 'test', description: 'test', assignedTo: 'test' } as Task);
-    this.categoryService.updateCategory(this.category).subscribe(() => this.getTasks());
+    const newTask = { id: Guid.newGuid(), title: '', description: '', assignedTo: '' } as Task;
+    const dialogConfig = {
+      autoFocus: true,
+      data: { task: newTask, title: 'New Task' },
+      width: '30%',
+    };
+
+    const dialogRef = this.dialog.open(EditTaskModalWindowComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(
+      accept => {
+        if (accept) {
+          this.category.tasks.push(newTask);
+          this.categoryService.updateCategory(this.category).subscribe(() => this.getTasks());
+        }
+      });
   }
 
   updateTask(task: Task) {
