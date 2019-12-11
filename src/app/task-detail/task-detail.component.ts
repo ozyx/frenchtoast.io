@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 import { Task } from '../model/task';
 import { MatDialog, MatDialogRef, MatDialogConfig } from '@angular/material/dialog';
 import { EditTaskModalWindowComponent } from '../edit-task-modal-window/edit-task-modal-window.component';
-import { DeleteTaskConfirmationComponent } from '../delete-task-confirmation/delete-task-confirmation.component';
+import { DeleteConfirmationComponent } from '../delete-confirmation/delete-confirmation.component';
 
 @Component({
   selector: 'app-task-detail',
@@ -25,7 +25,7 @@ export class TaskDetailComponent implements OnInit {
       autoFocus: true,
     };
 
-    const dialogRef = this.dialog.open(DeleteTaskConfirmationComponent, dialogConfig);
+    const dialogRef = this.dialog.open(DeleteConfirmationComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
       accept => {
@@ -41,7 +41,7 @@ export class TaskDetailComponent implements OnInit {
 
     const dialogConfig = {
       autoFocus: true,
-      data: this.task,
+      data: { task: this.task, title: 'Edit Task' },
       width: '30%'
     };
 
