@@ -20,7 +20,13 @@ export class TaskDetailComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Open confirmation dialog asking if user wants to delete this task
+   * If accepted, emit deleteThisTask(task) event to be caught and handled by
+   * the parent Category
+   */
   deleteTask() {
+
     const dialogConfig = {
       autoFocus: true,
       data: {
@@ -28,6 +34,7 @@ export class TaskDetailComponent implements OnInit {
       }
     };
 
+    // Open confirmation dialog
     const dialogRef = this.dialog.open(DeleteConfirmationComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe(
@@ -40,6 +47,11 @@ export class TaskDetailComponent implements OnInit {
     );
   }
 
+  /**
+   * Open a dialog which allows user to edit a particular task.
+   * If user hits save, emit updateTask(task) event to be caught by
+   * the parent Category. Otherwise, restore original values.
+   */
   openEditDialog() {
     const dialogConfig = {
       autoFocus: true,
