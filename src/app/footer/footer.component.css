@@ -14,7 +14,9 @@
 }
 
 .about-us {
-    font-size: 20px;
+    font-size: 22px;
+    margin-left: 10px;
+    color: '#f3e5f5';
 }
 
 .about-us:hover {
